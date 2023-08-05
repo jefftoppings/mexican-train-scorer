@@ -1,7 +1,14 @@
-<button
-  type="button"
-  class="btn btn-primary"
-  tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
->
-  Simple demo
-</button>
+<div class="home-container">
+  <span class="material-symbols-outlined train"> train </span>
+  <button type="button" class="btn btn-primary" (click)="handleNewGame()">
+    New game
+  </button>
+  <button
+    *ngIf="pastData"
+    type="button"
+    class="btn btn-primary"
+    (click)="handleContinue()"
+  >
+    Continue
+  </button>
+</div>
