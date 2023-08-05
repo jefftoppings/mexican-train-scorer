@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { setTheme } from 'ngx-bootstrap/utils';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'mexican-train-scorer';
+  constructor() {
+    setTheme('bs5');
+  }
+
+  handleMenuClicked(): void {
+    console.log('menu clicked');
+  }
 }

@@ -1,0 +1,26 @@
+$navbar-background: rgb(55, 146, 176);
+
+.top-navbar {
+    width: 100%;
+    background-color: $navbar-background;
+    display: grid;
+    grid-template-columns: 40px auto 40px;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    padding: 16px 8px;   
+    .menu-icon {
+        margin-left: 8px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    margin: 24px auto;
+}
