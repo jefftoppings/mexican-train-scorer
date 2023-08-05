@@ -1,1 +1,29 @@
-<p>configure works!</p>
+<div class="configure-container">
+  <div *ngFor="let p of playerControls; let i = index" class="form-group mb-3">
+    <label for="address">Player {{ i + 1 }}</label>
+    <input [formControl]="p" type="text" class="form-control" />
+  </div>
+  <div class="button-container">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="handleAddNewPlayer()"
+      [disabled]="playerControls.length >= maxPlayers"
+    >
+      Add player
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="handleRemovePlayer(playerControls.length - 1)"
+      [disabled]="playerControls.length <= 2"
+    >
+      Remove player
+    </button>
+  </div>
+  <div class="start-container">
+    <button type="button" class="btn btn-primary" (click)="handleStart()">
+      Start
+    </button>
+  </div>
+</div>
