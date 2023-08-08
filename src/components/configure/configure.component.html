@@ -1,6 +1,6 @@
 <div class="configure-container">
   <div *ngFor="let p of playerControls; let i = index" class="form-group mb-3">
-    <label for="address">Player {{ i + 1 }}</label>
+    <label>Player {{ i + 1 }}</label>
     <input [formControl]="p" type="text" class="form-control" />
   </div>
   <div class="button-container">
@@ -21,8 +21,22 @@
       Remove player
     </button>
   </div>
+  <div class="starting-round-container">
+    <label>Starting round</label>
+    <input
+      [formControl]="startingRoundControl"
+      type="number"
+      class="form-control"
+      max="13"
+      min="0"
+    />
+  </div>
   <div class="start-container">
-    <button type="button" class="btn btn-primary" (click)="handleStart()">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="handleStart()"
+    >
       Start
     </button>
   </div>

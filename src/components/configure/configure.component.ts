@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+import {
+  FormControl,
+  ReactiveFormsModule,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-configure',
@@ -10,11 +15,17 @@ import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup } from '@
   styleUrls: ['./configure.component.scss'],
 })
 export class ConfigureComponent {
-  playerControls: FormControl[] = [new FormControl(), new FormControl()];
+  playerControls: FormControl[] = [
+    new FormControl('', [Validators.required]),
+    new FormControl('', [Validators.required]),
+  ];
   maxPlayers = 7;
+  startingRoundControl: FormControl = new FormControl(13);
+
+  constructor() {}
 
   handleAddNewPlayer(): void {
-    this.playerControls.push(new FormControl());
+    this.playerControls.push(new FormControl('', [Validators.required]));
   }
 
   handleRemovePlayer(index: number): void {
@@ -23,6 +34,14 @@ export class ConfigureComponent {
 
   handleStart(): void {
     // TODO
+    const formGroup: UntypedFormGroup = new UntypedFormGroup({});
+    this.playerControls.forEach((control, i) =>
+      formGroup.addControl(`player${i + 1}`, control)
+    );
+    if (formGroup.invalid) {
+      alert('Please make sure all players have a name set');
+    }
+    console.log(formGroup);
+    ``;
   }
-
 }
